@@ -1,0 +1,28 @@
+<div class="row text-center">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1>Pantry</h1>
+    <div ng-hide='isLoggedIn()'>
+      <h2>Please create an account or log in to access your pantry!</h2>
+    </div> 
+  </div>
+</div>
+<section>
+  <div class="row" ng-show='isLoggedIn()'>
+    <div ng-if='userPantry < 1' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h2>You don't have any items in your pantry!</h2>
+      <button><a href="/addItem">Add Items</a></button>
+    </div>
+    <div ng-if='userPantry' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <button><a href="/addItem">Add More Items</a></button>
+    </div>
+    <div class=" col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: search track by item._id'>
+      <div class="itemCard">
+        <a ng-href="/pantry/{{item._id}}">
+        <h4>{{item.name}}</h4>
+        <h3>Purchased: {{item.addDate | date}}</h3>
+        <img ng-src="{{item.img}}">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

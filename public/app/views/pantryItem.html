@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class='text-{{class}}'>{{item.name}}</h2>
+    <h3>Purchased: {{item.addDate | date}}</h3>
+    <h3>{{item.addDate | date}} vs {{today |date}}</h3>
+    <h4>{{class}}</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button><a href="/map">Donate</a></button>
+    <button ng-click='deleteItem(item._id)'>Delete</button>
+  </div>
+</div>

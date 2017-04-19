@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="">
+    <button ng-hide='isLoggedIn()'><a href='/login'>Login</a></button>
+    <button  ng-hide='isLoggedIn()'><a href='/signup'>Signup</a></button>
+    <h2 ng-show='isLoggedIn()'>Welcome {{ user.name }}</h2>
+  </div>
+</div>
+<div class="row">
+  <div>
+    <button><a href='/pantry'>Your Eats</a></button>
+    <button><a href='http://www.feedingamerica.org/find-your-local-foodbank/'>Donate</a></button>
+    <button><a ng-click='menu()'>Menu</a></button>
+  </div>
+</div>
