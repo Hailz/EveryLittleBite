@@ -62,7 +62,8 @@ app.config([
     })
     .state('admin', {
       url: '/admin',
-      templateUrl: 'app/views/admin.html'
+      templateUrl: 'app/views/admin.html',
+      controller: 'Admin'
     })
     $locationProvider.html5Mode(true);
   }])

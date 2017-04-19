@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.route('/')
   .get(function(req, res){
-    Foods.findOne({ name: req.body.name },function(err, food){
+    Foods.find(function(err, food){
       if (err) return res.status(500).send(err);
       return res.send(food);
     });

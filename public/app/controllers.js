@@ -109,7 +109,6 @@ angular.module('AppCtrl', ['AppServices'])
   $scope.userPantry = [];
 
   $scope.today = new Date();
-  console.log("TODAY IS ",$scope.today)
 
   $scope.isLoggedIn = function() {
       return Auth.isLoggedIn();
@@ -118,13 +117,11 @@ angular.module('AppCtrl', ['AppServices'])
   //get all of the panty items for all the users
   PantriesAPI.getAllPantries()
   .then(function success(res){
-    console.log(res.data)
     $scope.pantries = res.data;
     //filter the results to just those belonging to the current user
     $scope.userPantry = $scope.pantries.filter(function(pantry){
       return pantry.userId == $scope.user.id
     })
-    console.log($scope.userPantry)
   }, function error(err){
     console.log('Error', err);
   })
@@ -159,23 +156,43 @@ angular.module('AppCtrl', ['AppServices'])
   }
 
   $scope.addItem = function(){
-    console.log('Add item: ', $scope.newItem.name[0].toUpperCase())
-    FoodsAPI.getFood($scope.newItem.name[0].toUpperCase())
+    FoodsAPI.getFood()
     .then( function success(res){
-      var dbFood = res.data;
+      $scope.dbFood = res.data;
+      $scope.tempFood = $scope.dbFood.filter(function(item){
+        return item.name == $scope.newItem.name
+      })
+      $scope.food = $scope.tempFood[0]
 
-      $scope.fullItem = {
-        userId: $scope.user.id,
-        name: dbFood.name,
-        addDate: $scope.newItem.addDate,
-        img: dbFood.img,
-        useBy: dbFood.useBy,
-        type: dbFood.type,
-        compostable: dbFood.compostable,
-        freeze: dbFood.freeze,
-        fridge: dbFood.fridge
+      console.log($scope.food)
+      console.log($scope.newItem.name)
+      if ($scope.food) {
+        $scope.fullItem = {
+          userId: $scope.user.id,
+          name: $scope.food.name,
+          addDate: $scope.newItem.addDate,
+          img: $scope.food.img,
+          useBy: $scope.food.useBy,
+          type: $scope.food.type,
+          compostable: $scope.food.compostable,
+          freeze: $scope.food.freeze,
+          fridge: $scope.food.fridge
+        }
+      } else {
+        $scope.fullItem = {
+          userId: $scope.user.id,
+          name: $scope.newItem.name,
+          addDate: $scope.newItem.addDate,
+          img: "http://www.prevention.com/sites/prevention.com/files/images/news/featured_images/food-question-mark-628x363.jpg",
+          useBy: '15',
+          type: "Unknown",
+          compostable: "Unknown",
+          freeze: "Unknown",
+          fridge: "Unknown"
+        }
       }
 
+      console.log("++++++++++", $scope.fullItem)
       PantriesAPI.addPantry($scope.fullItem).then(function success(res){
         $location.path('/pantry')
       }, function error(err){
@@ -191,7 +208,6 @@ angular.module('AppCtrl', ['AppServices'])
   $scope.user = Auth.currentUser();
   $scope.item = {}
   $scope.today = new Date();
-  console.log("TODAY IS ",$scope.today)
 
   $scope.isLoggedIn = function() {
       return Auth.isLoggedIn();
@@ -264,7 +280,7 @@ angular.module('AppCtrl', ['AppServices'])
   }
 
 }])
-.controller('Admin', ['$scope', '$location', '$http', 'Auth', function($scope, $location, $http, Auth){
+.controller('Admin', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'FoodsAPI', function($scope, $location, $http, Auth, UsersAPI, FoodsAPI){
   $scope.user = Auth.currentUser();
   $scope.isLoggedIn = function() {
       return Auth.isLoggedIn();
@@ -289,6 +305,24 @@ angular.module('AppCtrl', ['AppServices'])
     compostable: '',
     freeze: '',
     fridge: ''
+  }
+
+  $scope.addFood = function(){
+    FoodsAPI.addFood($scope.newFood)
+    .then(function success(res){
+      console.log("Added food", res)
+      $scope.newFood = {
+        img: '',
+        name: '',
+        useBy: '',
+        type: '',
+        compostable: '',
+        freeze: '',
+        fridge: ''
+      }
+    }, function error(err){
+      console.log("Add food failed", err)
+    })
   }
 
 }])

@@ -10,7 +10,6 @@ var PantriesSchema = new mongoose.Schema({
   compostable: String,
   freeze: String,
   fridge: String
-
 });
 
 module.exports = mongoose.model('Pantries', PantriesSchema);

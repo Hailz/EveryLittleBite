@@ -1,10 +1,10 @@
 <h1>Welcome Admin!</h1>
 
-<div ng-hide='Admin()'>
+<div ng-hide='admin()'>
   <h2>This page is for Admins only. If you feel you have reached this message inaccurately please contact someone Hailey or Ben.</h2>
 </div>
 
-<content ng-show='Admin()'>
+<content ng-show='admin()'>
   <form ng-submit='addFood()'>
     <label>Product Img:</label>
     <input ng-model='newFood.img' type="text" name="img" placeholder="Image URL">

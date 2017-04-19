@@ -131,10 +131,10 @@ angular.module('AppServices', ['ngResource'])
   return{
     addFood: function(item){
       console.log('Add to foods', item)
-      return $http.post('/api/admin', item);
+      return $http.post('/api/foods', item);
     },
-    getFood: function(name){
-      return $http.get('/api/addItem', name);
+    getFood: function(){
+      return $http.get('/api/foods');
     }
   }
 }])
