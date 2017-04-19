@@ -106,8 +106,14 @@ angular.module('AppServices', ['ngResource'])
     getPantry: function(id){
       return $http.get('/api/pantries/'+id);
     },
-    updatePantry: function(id){
-      console.log('Pantry item id:', id)
+    updatePantry: function(id, item){
+      console.log('Pantry item id:', id.id);
+      return $http.put('/api/pantries/'+id.id, item)
+      .then(function success(res){
+          return res.data
+      }, function error(err){
+          return null;
+      });
     },
     deletePantry: function(id){
       console.log('Delete pantry item: ', id)
@@ -118,6 +124,17 @@ angular.module('AppServices', ['ngResource'])
       }, function error(err){
         return console.log('Failed to delete pantry item',err)
       })
+    }
+  }
+}])
+.factory('FoodsAPI', ['$http', '$location', function($http, $location){
+  return{
+    addFood: function(item){
+      console.log('Add to foods', item)
+      return $http.post('/api/admin', item);
+    },
+    getFood: function(name){
+      return $http.get('/api/addItem', name);
     }
   }
 }])

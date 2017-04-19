@@ -23,21 +23,24 @@ router.delete('/:id', function(req, res){
   Pantries.findByIdAndRemove(req.params.id, function(err){ 
     if (err) return res.status(500).send(err);
     return res.send({message: 'Pantry item Deleted'})
-  })
-})
+  });
+});
+
 router.route('/:id')
-    .get(function(req, res) {
-      Pantries.findById(req.params.id, function(err, pantry) {
-        if (err) return res.status(500).send(err);
-        return res.send(pantry);
-    })
-})
-router.put('/:id', function(req, res) {
+  .get(function(req, res) {
+    Pantries.findById(req.params.id, function(err, pantry) {
+      if (err) return res.status(500).send(err);
+      return res.send(pantry);
+    });
+  });
+
+  router.put('/:id', function(req, res) {
+    console.log("______________",req.body, req.params.id)
     Pantries.findByIdAndUpdate(req.params.id, req.body, function(err) {
       if (err) return res.status(500).send(err);
       return res.send({ message: 'success' });
     });
-})
+  });
 
 
 module.exports = router;

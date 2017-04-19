@@ -3,6 +3,8 @@
     <button ng-hide='isLoggedIn()'><a href='/login'>Login</a></button>
     <button  ng-hide='isLoggedIn()'><a href='/signup'>Signup</a></button>
     <h2 ng-show='isLoggedIn()'>Welcome {{ user.name }}</h2>
+    <br>
+    <button ng-show='admin()'><a href="/admin">Add to Foods DB</a></button>
   </div>
 </div>
 <div class="row">

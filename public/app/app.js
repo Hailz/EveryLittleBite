@@ -47,13 +47,22 @@ app.config([
       templateUrl: 'app/views/pantryItem.html',
       controller: 'ItemCtrl'
     })
-    .state('map', {
-      url: '/map',
-      templateUrl: 'app/views/map.html'
+    .state('editItem', {
+      url: '/editItem/:id',
+      templateUrl: 'app/views/editItem.html',
+      controller: 'EditItemCtrl'
     })
-    .state('favorites', {
-      url: '/favorites',
-      templateUrl: 'app/views/favorites.html'
+    .state('foodbanks', {
+      url: '/foodbanks',
+      templateUrl: 'app/views/foodbanks.html'
+    })
+    .state('gardens', {
+      url: '/gardens',
+      templateUrl: 'app/views/gardens.html'
+    })
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'app/views/admin.html'
     })
     $locationProvider.html5Mode(true);
   }])

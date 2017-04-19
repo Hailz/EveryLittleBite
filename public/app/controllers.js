@@ -81,6 +81,14 @@ angular.module('AppCtrl', ['AppServices'])
     $scope.user = user.data
   })
 
+  $scope.admin = function(){
+    console.log($scope.user)
+    if ($scope.user.name == 'Hailey'){
+      return true
+    }
+  }
+
+  //At some point will connect to a recepie API
   $scope.menu = function(){
     console.log('Coming soon!')
   }
@@ -92,6 +100,8 @@ angular.module('AppCtrl', ['AppServices'])
   $scope.isLoggedIn = function() {
       return Auth.isLoggedIn();
   }
+
+  //This may at some point allow users to save preferred donating locations
 
 }])
 .controller('PantryCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI){
@@ -105,10 +115,12 @@ angular.module('AppCtrl', ['AppServices'])
       return Auth.isLoggedIn();
   }
 
+  //get all of the panty items for all the users
   PantriesAPI.getAllPantries()
   .then(function success(res){
     console.log(res.data)
     $scope.pantries = res.data;
+    //filter the results to just those belonging to the current user
     $scope.userPantry = $scope.pantries.filter(function(pantry){
       return pantry.userId == $scope.user.id
     })
@@ -117,12 +129,13 @@ angular.module('AppCtrl', ['AppServices'])
     console.log('Error', err);
   })
 
+  //get the difference in days between when the item was bought and today
   $scope.getClass = function(addDate){
     var date1 = new Date(addDate);
     var timeDiff = Math.abs($scope.today.getTime() - date1.getTime());
     $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-    console.log($scope.dayDifference)
     var age = ($scope.dayDifference -1)
+    //based on the difference in days get a class to determine item background color
     if (age < 10) {
       $scope.class = 'success';
     } else if (age < 15){
@@ -131,14 +144,12 @@ angular.module('AppCtrl', ['AppServices'])
       $scope.class = 'danger';
     }
     return $scope.class
-    console.log("!!!!!!!!!!!!!",$scope.class)
   }
 
 }])
-.controller('AddCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI){
+.controller('AddCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', 'FoodsAPI', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI, FoodsAPI){
   $scope.user = Auth.currentUser();
   $scope.newItem = {
-    userId: $scope.user.id,
     name: '',
     addDate: ''
   }
@@ -147,21 +158,37 @@ angular.module('AppCtrl', ['AppServices'])
       return Auth.isLoggedIn();
   }
 
-  console.log('User:', $scope.user)
   $scope.addItem = function(){
-    console.log('Add item: ', $scope.newItem)
-    PantriesAPI.addPantry($scope.newItem).then(function success(res){
-      $location.path('/pantry')
+    console.log('Add item: ', $scope.newItem.name[0].toUpperCase())
+    FoodsAPI.getFood($scope.newItem.name[0].toUpperCase())
+    .then( function success(res){
+      var dbFood = res.data;
+
+      $scope.fullItem = {
+        userId: $scope.user.id,
+        name: dbFood.name,
+        addDate: $scope.newItem.addDate,
+        img: dbFood.img,
+        useBy: dbFood.useBy,
+        type: dbFood.type,
+        compostable: dbFood.compostable,
+        freeze: dbFood.freeze,
+        fridge: dbFood.fridge
+      }
+
+      PantriesAPI.addPantry($scope.fullItem).then(function success(res){
+        $location.path('/pantry')
+      }, function error(err){
+        console.log('Failed to add item', err)
+      })
     }, function error(err){
-      console.log('Failed to add item', err)
+      console.log("Matching item not found.", err)
     })
   }
 
 }])
 .controller('ItemCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', '$stateParams', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI, $stateParams){
   $scope.user = Auth.currentUser();
-  $scope.allPantry = [];
-  $scope.userPantry = [];
   $scope.item = {}
   $scope.today = new Date();
   console.log("TODAY IS ",$scope.today)
@@ -172,7 +199,7 @@ angular.module('AppCtrl', ['AppServices'])
 
   PantriesAPI.getPantry($stateParams.id)
   .then(function success(res){
-    console.log("Retrieved: ",res)
+    console.log("Retrieved: ",res.data)
     $scope.item = res.data
     var addDate = $scope.item.addDate;
       var date1 = new Date(addDate);
@@ -203,25 +230,65 @@ angular.module('AppCtrl', ['AppServices'])
   }
 
 }])
-.controller('MapCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'FavoritesAPI', function($scope, $location, $http, Auth, UsersAPI, FavoriteAPI){
+.controller('EditItemCtrl', ['$scope', '$location', '$http', '$stateParams', 'Auth', 'UsersAPI', 'PantriesAPI', function($scope, $location, $http, $stateParams, Auth, UsersAPI, PantriesAPI){
+  $scope.item = {}
 
-  var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyBcA4fSurVkBGMGCfrUG4oAzOKAGJNVYZw'
+  $scope.update = {
+    userId: $scope.item.userId,
+    name: $scope.item.name,
+    addDate: '',
+    img: $scope.item.img,
+    useBy: $scope.item.useBy,
+    type: $scope.item.type,
+    compostable: $scope.item.compostable,
+    freeze: $scope.item.freeze,
+    fridge: $scope.item.fridge
+  }
+
+  PantriesAPI.getPantry($stateParams.id)
+  .then(function success(res){
+    console.log("Retrieved: ",res)
+    $scope.item = res.data
+  }, function error(err){
+    console.log("Failed to get item", err)
   });
 
-  $scope.location = 
-    http.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBcA4fSurVkBGMGCfrUG4oAzOKAGJNVYZw')
+  $scope.editItem = function(){
+    PantriesAPI.updatePantry($stateParams, $scope.update)
+    .then(function success(res){
+      console.log('Item edited' + res)
+      $location.path('/pantry')
+    }, function error(err){
+      console.log("Failed to update" + err)
+    })
+  }
 
-  $.ajax({
-      url: "https://data.seattle.gov/resource/3c4b-gdxv.json",
-      type: "GET",
-      data: {
-        "$limit" : 5000,
-        "$$app_token" : "u5ruhwBkm64H2YefDkrWt7eqJ"
-      }
-  }).done(function(data) {
-    alert("Retrieved " + data.length + " records from the dataset!");
-    console.log(data);
-  });
-    
+}])
+.controller('Admin', ['$scope', '$location', '$http', 'Auth', function($scope, $location, $http, Auth){
+  $scope.user = Auth.currentUser();
+  $scope.isLoggedIn = function() {
+      return Auth.isLoggedIn();
+  }
+
+  UsersAPI.getUser($scope.user.id).then(function(user){
+    $scope.user = user.data
+  })
+
+  $scope.admin = function(){
+    console.log($scope.user)
+    if ($scope.user.name == 'Hailey'){
+      return true
+    }
+  }
+
+  $scope.newFood = {
+    img: '',
+    name: '',
+    useBy: '',
+    type: '',
+    compostable: '',
+    freeze: '',
+    fridge: ''
+  }
+
 }])
