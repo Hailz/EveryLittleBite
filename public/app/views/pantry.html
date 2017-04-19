@@ -16,10 +16,10 @@
       <button><a href="/addItem">Add More Items</a></button>
     </div>
     <div class=" col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: search track by item._id'>
-      <div class="itemCard">
+      <div class="itemCard bg-{{getClass(item.addDate)}}">
         <a ng-href="/pantry/{{item._id}}">
-        <h4>{{item.name}}</h4>
-        <h3>Purchased: {{item.addDate | date}}</h3>
+        <h3>{{item.name}}</h3>
+        <h4>Purchased: {{item.addDate | date}}</h4>
         <img ng-src="{{item.img}}">
         </a>
       </div>

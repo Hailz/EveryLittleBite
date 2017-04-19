@@ -117,6 +117,23 @@ angular.module('AppCtrl', ['AppServices'])
     console.log('Error', err);
   })
 
+  $scope.getClass = function(addDate){
+    var date1 = new Date(addDate);
+    var timeDiff = Math.abs($scope.today.getTime() - date1.getTime());
+    $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+    console.log($scope.dayDifference)
+    var age = ($scope.dayDifference -1)
+    if (age < 10) {
+      $scope.class = 'success';
+    } else if (age < 15){
+      $scope.class = 'warning';
+    } else {
+      $scope.class = 'danger';
+    }
+    return $scope.class
+    console.log("!!!!!!!!!!!!!",$scope.class)
+  }
+
 }])
 .controller('AddCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI){
   $scope.user = Auth.currentUser();
@@ -158,49 +175,19 @@ angular.module('AppCtrl', ['AppServices'])
     console.log("Retrieved: ",res)
     $scope.item = res.data
     var addDate = $scope.item.addDate;
-    console.log("+++++++++++++++++++",addDate)
-
-      // var today1 = new Date();
-      // var dd = today1.getDate();
-      // var mm = today1.getMonth() + 1; //January is 0!
-      // var yyyy = today1.getFullYear();
-      // if (dd < 10) {
-      //   dd = '0' + dd
-      // }
-      // if (mm < 10) {
-      //   mm = '0' + mm
-      // }
-      // today1 = yyyy + '/' + mm + '/' + dd;
-      // $scope.today1 = today1;
-      console.log("!!!!!!!!!!!!",$scope.today)
-      // var dd2 = addDate.getDate();
-      // var mm2 = addDate.getMonth() + 1; //January is 0!
-      // var yyyy2 = addDate.getFullYear();
-      // if (dd2 < 10) {
-      //   dd2 = '0' + dd2
-      // }
-      // if (mm2 < 10) {
-      //   mm2 = '0' + mm2
-      // }
-      // addDate = yyyy2 + '/' + mm2 + '/' + dd2;
-      // $scope.addDate = addDate;
-
-      var date2 = new Date($scope.today);
       var date1 = new Date(addDate);
-      var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-      $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      
+      var timeDiff = Math.abs($scope.today.getTime() - date1.getTime());
+      $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
     console.log($scope.dayDifference)
     var age = ($scope.dayDifference -1)
     if (age < 10) {
       $scope.class = 'success';
-    } else if (age < 14){
+    } else if (age < 15){
       $scope.class = 'warning';
     } else {
       $scope.class = 'danger';
     }
     console.log($scope.class)
-
   }, function error(err){
     console.log('Get pantry item error: ',err)
   })
