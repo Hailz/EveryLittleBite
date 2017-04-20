@@ -39,10 +39,10 @@ Built by Hailey Dangel, Designed by Benjamin Frates
   I really wanted to build this site out using Ionic. I spent day one and day two researching Ionic and trying to learn TypeScript, Cordova, Angular 2, Ionic v2 and v3, and several various backend db options it allowed for. In the end I couldn't find information reliable enough for me to feel I could build out all that I wanted to build within my remaining three days so I switched gears to a MEAN stack app.
 
   ## Day 3:
-  I got the pantry and user dbs up and connected. I'm trying to find an API to provide images for the products and am trying to get directions to food banks going.
+  I got the pantry and user dbs up and connected. I built out an API that we're going to populate with food images and information because I couldn't find one that offerred the information I needed.
 
   ## Day 4:
-  
+  I finished getting a recipe API connected and built an admin controller to help prevent access to admin pages. 
 
   ## Day 5:
   
