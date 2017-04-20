@@ -210,7 +210,6 @@ angular.module('AppCtrl', ['AppServices'])
       var date1 = new Date(addDate);
       var timeDiff = Math.abs($scope.today.getTime() - date1.getTime());
       $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-    console.log($scope.dayDifference)
     var age = ($scope.dayDifference -1)
     if (age < 10) {
       $scope.class = 'success';
@@ -219,10 +218,16 @@ angular.module('AppCtrl', ['AppServices'])
     } else {
       $scope.class = 'danger';
     }
-    console.log($scope.class)
   }, function error(err){
     console.log('Get pantry item error: ',err)
   })
+
+  $scope.compostable = function(){
+    console.log($scope.item.compostable)
+    if ($scope.item.compostable == 'true') {
+      return true
+    } 
+  }
 
   $scope.deleteItem = function(id){
       PantriesAPI.deletePantry(id)

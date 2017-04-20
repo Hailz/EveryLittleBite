@@ -1,24 +1,23 @@
 <div class="row">
   <div class="col-xs-12 bg-{{class}}">
-    <img ng-src="{{item.img}}">
-    <h2>{{item.name}}</h2>
+    <img ng-src="{{item.img}}" class="img-circle">
+    <h2>{{item.name}} <small>{{item.type}}</small></h2>
     <h3>Purchased: {{item.addDate | date}}</h3>
   </div>
 </div>
 <div class="row">
   <div>
-    <h4>{{item.useBy}}</h4>
-    <h4>{{item.type}}</h4>
-    <h4>{{item.compostable}}</h4>
-    <h4>{{item.freeze}}</h4>
-    <h4>{{item.fridge}}</h4>
+    <h4>Recommended to use withing {{item.useBy}} days.</h4>
+    <h4>Compostable? {{item.compostable}}</h4>
+    <h4>Refrigeration info: {{item.fridge}}</h4>
+    <h4>Freezable? {{item.freeze}}</h4>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <button><a href="/foodbanks">Donate</a></button>
-    <button ng-if='item.compostable == true'><a href="/gardens">Compost</a></button>
-    <button><a href="/editItem/{{item._id}}">Buy Again</a></button>
-    <button ng-click='deleteItem(item._id)'>Delete</button>
+    <a class="btn btn-default" href="/foodbanks">Donate</a>
+    <a class="btn btn-default" ng-show='compostable()' href="/gardens">Compost</a>
+    <a class="btn btn-default" href="/editItem/{{item._id}}">Buy Again</a>
+    <button ng-click='deleteItem(item._id)' class="btn btn-default">Delete</button>
   </div>
 </div>
