@@ -94,7 +94,6 @@ angular.module('AppCtrl', ['AppServices'])
 .controller('PantryCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI){
   $scope.user = Auth.currentUser();
   $scope.userPantry = [];
-
   $scope.today = new Date();
 
   $scope.isLoggedIn = function() {
@@ -109,12 +108,11 @@ angular.module('AppCtrl', ['AppServices'])
     $scope.userPantry = $scope.pantries.filter(function(pantry){
       return pantry.userId == $scope.user.id
     })
+    //further filter for each individual catergory
     $scope.fruits = $scope.userPantry.filter(function(item){
       console.log(item.type)
       return item.type == "fruit"
     })
-
-    console.log("----------",$scope.fruits)
 
     $scope.vegetables = $scope.userPantry.filter(function(item){
       return item.type == "vegetable"
@@ -196,7 +194,7 @@ angular.module('AppCtrl', ['AppServices'])
           userId: $scope.user.id,
           name: $scope.name,
           addDate: $scope.newItem.addDate,
-          img: '../../images/questionMark.jpg',
+          img: '../../images/questionMark.png',
           useBy: '15',
           type: "Unknown",
           compostable: "Unknown",
@@ -245,7 +243,6 @@ angular.module('AppCtrl', ['AppServices'])
   })
 
   $scope.compostable = function(){
-    console.log($scope.item.compostable)
     if ($scope.item.compostable == 'true') {
       return true
     } 

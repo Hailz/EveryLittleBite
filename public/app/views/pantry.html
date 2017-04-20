@@ -17,26 +17,30 @@
         <button class="btn btn-md btn-default addItemBtn"><a href="/addItem">Add More Items</a></button>
       </div>
     </div>
-    <div class=" form-group row">
-      <label class="col-xs-3">Search</label>
+    <div ng-if='userPantry.length > 0' class="form-group row">
+      <label class="col-xs-3">Search:</label>
       <div class="col-xs-9">
-        <input class="form-control" type="text" name="search" ng-model='search'>
+        <input class="form-control" type="text" name="search" ng-model='searchTerm'>
       </div>
     </div>
 
-    <div ng-if='search' class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: search track by item._id'>
-      <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
-        <a ng-href="/pantry/{{item._id}}">
-        <h3>{{item.name}}</h3>
-        <h4>Purchased: {{item.addDate | date}}</h4>
-        <img class="img-circle productImg" ng-src="{{item.img}}">
-        </a>
+    <div ng-if='searchTerm'>
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: searchTerm track by item._id'>
+          <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
+            <a ng-href="/pantry/{{item._id}}">
+            <h3>{{item.name}}</h3>
+            <h4>Purchased: {{item.addDate | date}}</h4>
+            <img class="img-circle productImg" ng-src="{{item.img}}">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div ng-if='!search'>
+    <div ng-if='!searchTerm'>
       <div class="row" ng-if='fruits.length > 0'>
-        <h1 class="fruits">Fruits</h1>
+        <h1 class="fruits shadow">Fruits</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in fruits track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
             <a ng-href="/pantry/{{item._id}}">
@@ -49,7 +53,7 @@
       </div>
 
       <div class="row" ng-if='vegetables.length > 0'>
-        <h1 class="vegetables">Vegetables</h1>
+        <h1 class="vegetables shadow">Vegetables</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in vegetables track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
             <a ng-href="/pantry/{{item._id}}">
@@ -62,7 +66,7 @@
       </div>
 
       <div class="row" ng-if='dairy.length > 0'>
-        <h1 class="dairy">Dairy</h1>
+        <h1 class="dairy shadow">Dairy</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in dairy track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
             <a ng-href="/pantry/{{item._id}}">
@@ -75,7 +79,7 @@
       </div>
 
       <div class="row" ng-if='meat.length > 0'>
-        <h1 class="meat">Meat</h1>
+        <h1 class="meat shadow">Meat</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in meat track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
             <a ng-href="/pantry/{{item._id}}">
@@ -88,7 +92,7 @@
       </div>
 
       <div class="row" ng-if='unknown.length > 0'>
-        <h1 class="unknown">Unknown</h1>
+        <h1 class="unknown shadow">Unknown</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in unknown track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
             <a ng-href="/pantry/{{item._id}}">

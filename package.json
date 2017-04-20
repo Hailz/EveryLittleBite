@@ -21,6 +21,7 @@
     "mongoose": "^4.9.2",
     "morgan": "^1.8.1",
     "sanitize-html": "^1.14.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "unirest": "^0.5.1"
   }
 }
