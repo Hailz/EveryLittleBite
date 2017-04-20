@@ -114,15 +114,16 @@ angular.module('AppCtrl', ['AppServices'])
   })
 
   //get the difference in days between when the item was bought and today
-  $scope.getClass = function(addDate){
+  $scope.getClass = function(addDate, useBy){
     var date1 = new Date(addDate);
     var timeDiff = Math.abs($scope.today.getTime() - date1.getTime());
     $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
     var age = ($scope.dayDifference -1)
     //based on the difference in days get a class to determine item background color
-    if (age < 10) {
+    console.log(useBy)
+    if (age < (useBy / 2)) {
       $scope.class = 'success';
-    } else if (age < 15){
+    } else if (age < useBy){
       $scope.class = 'warning';
     } else {
       $scope.class = 'danger';

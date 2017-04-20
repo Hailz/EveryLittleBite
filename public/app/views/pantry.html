@@ -12,14 +12,15 @@
       <h2>You don't have any items in your pantry!</h2>
       <a href="/addItem"><button class="btn btn-lg btn-default addItemBtn">Add Items</button></a>
     </div>
-    <div ng-if='userPantry > 0' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div ng-if='userPantry.length > 0' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <button class="btn btn-lg btn-default addItemBtn"><a href="/addItem">Add More Items</a></button>
     </div>
     <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: search track by item._id'>
-      <div class="itemCard bg-{{getClass(item.addDate)}}">
+      <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}}">
         <a ng-href="/pantry/{{item._id}}">
         <h3>{{item.name}}</h3>
         <h4>Purchased: {{item.addDate | date}}</h4>
+        <h5>{{item.useBy}}</h5>
         <img class="img-circle productImg" ng-src="{{item.img}}">
         </a>
       </div>
