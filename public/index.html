@@ -11,7 +11,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -33,8 +34,8 @@
     <![endif]-->
   </head>
   <body>
+    <div ng-include="'app/views/navbar.html'"></div>
     <div class="container-fluid">
-        <div ng-include="'app/views/navbar.html'"></div>
         <div ui-view class="text-center"></div>  
     </div>
   </body>

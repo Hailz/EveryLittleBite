@@ -32,6 +32,8 @@ app.use('/api/users', expressJWT({secret: secret}).unless({
 //Controllers
 app.use('/api/pantries', require('./controllers/pantries'));
 app.use('/api/foods', require('./controllers/foods'));
+app.use('/menus', require('./controllers/menus'));
+app.use('/admins', require('./controllers/admins'));
 
 // this middleware will check if expressJWT did not authorize the user, and return a message
 app.use(function (err, req, res, next) {

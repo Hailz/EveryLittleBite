@@ -60,10 +60,23 @@ app.config([
       url: '/gardens',
       templateUrl: 'app/views/gardens.html'
     })
+    .state('farms', {
+      url: '/farms',
+      templateUrl: 'app/views/farm.html'
+    })
+    .state('donate', {
+      url: '/donate',
+      templateUrl: 'app/views/donate.html'
+    })
     .state('admin', {
       url: '/admin',
       templateUrl: 'app/views/admin.html',
       controller: 'Admin'
+    })
+    .state('menu', {
+      url: '/recipes',
+      templateUrl: 'app/views/menu.html',
+      controller: 'MenuCtrl'
     })
     $locationProvider.html5Mode(true);
   }])

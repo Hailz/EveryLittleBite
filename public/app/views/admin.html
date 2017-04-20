@@ -7,19 +7,19 @@
 <content ng-show='admin()'>
   <form ng-submit='addFood()'>
     <label>Product Img:</label>
-    <input ng-model='newFood.img' type="text" name="img" placeholder="Image URL">
+    <input ng-model='newFood.img' class="form-control" type="text" name="img" placeholder="Image URL">
     <label>Name:</label>
-    <input ng-model='newFood.name' type="text" name="name" placeholder="ie Apple">
+    <input ng-model='newFood.name' class="form-control" type="text" name="name" placeholder="ie Apple">
     <label>useBy:</label>
-    <input ng-model='newFood.useBy' type="num" name="useBy" placeholder="Number of days good for. ie 10">
+    <input ng-model='newFood.useBy' class="form-control" type="num" name="useBy" placeholder="Number of days good for. ie 10">
     <label>Type:</label>
-    <input ng-model='newFood.type' type="text" name="type" placeholder="dairy meat veg fruit">
+    <input ng-model='newFood.type' class="form-control" type="text" name="type" placeholder="dairy meat veg fruit">
     <label>Compostable:</label>
-    <input ng-model='newFood.compostable' type="text" name="compostable" placeholder="true or false">
+    <input ng-model='newFood.compostable' class="form-control" type="text" name="compostable" placeholder="true or false">
     <label>Freeze Info:</label>
-    <input ng-model='newFood.freeze' type="text" name="freeze" placeholder="Freeze or not info">
+    <input ng-model='newFood.freeze' class="form-control" type="text" name="freeze" placeholder="Freeze or not info">
     <label>Fridge Info:</label>
-    <input ng-model='newFood.fridge' type="text" name="fridge" placeholder="Refigeration info">
-    <input type="submit" class="btn">
+    <input ng-model='newFood.fridge' class="form-control" type="text" name="fridge" placeholder="Refigeration info">
+    <input type="submit" class="btn btn-default">
   </form>
 </content>

@@ -1,0 +1,13 @@
+<div class="row">
+  <label>Search for recipes by ingredient:</label>
+  <input type="text" ng-model='searchTerm.ingredients'>
+  <input type="submit" ng-click='search()'>
+</div>
+<div class="row">
+  <div ng-repeat='recipe in recipes track by $index'>
+    <div>
+      <h1>{{recipe.title}}</h1>
+      <img ng-src="{{recipe.image}}">
+    </div>
+  </div>
+</div>

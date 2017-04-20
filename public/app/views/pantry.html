@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h1>Pantry</h1>
     <div ng-hide='isLoggedIn()'>
-      <h2>Please create an account or log in to access your pantry!</h2>
+      <h2>Please <a href="/signup">create an account</a> or <a href="/login">login</a> to access your pantry!</h2>
     </div> 
   </div>
 </div>
@@ -10,17 +10,17 @@
   <div class="row" ng-show='isLoggedIn()'>
     <div ng-if='userPantry < 1' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h2>You don't have any items in your pantry!</h2>
-      <button><a href="/addItem">Add Items</a></button>
+      <a href="/addItem"><button class="btn btn-lg btn-default addItemBtn">Add Items</button></a>
     </div>
-    <div ng-if='userPantry' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <button><a href="/addItem">Add More Items</a></button>
+    <div ng-if='userPantry > 0' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <button class="btn btn-lg btn-default addItemBtn"><a href="/addItem">Add More Items</a></button>
     </div>
-    <div class=" col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: search track by item._id'>
+    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-repeat='item in userPantry | filter: search track by item._id'>
       <div class="itemCard bg-{{getClass(item.addDate)}}">
         <a ng-href="/pantry/{{item._id}}">
         <h3>{{item.name}}</h3>
         <h4>Purchased: {{item.addDate | date}}</h4>
-        <img ng-src="{{item.img}}">
+        <img class="img-circle productImg" ng-src="{{item.img}}">
         </a>
       </div>
     </div>

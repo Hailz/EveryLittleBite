@@ -71,7 +71,7 @@ angular.module('AppCtrl', ['AppServices'])
     })
   }
 }])
-.controller('HomeCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', function($scope, $location, $http, Auth, UsersAPI){
+.controller('HomeCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'AdminAPI', function($scope, $location, $http, Auth, UsersAPI, AdminAPI){
   $scope.user = Auth.currentUser();
   $scope.isLoggedIn = function() {
       return Auth.isLoggedIn();
@@ -81,27 +81,14 @@ angular.module('AppCtrl', ['AppServices'])
     $scope.user = user.data
   })
 
-  $scope.admin = function(){
-    console.log($scope.user)
-    if ($scope.user.name == 'Hailey'){
-      return true
+  AdminAPI.getAdmin().then(function(admin){
+    $scope.adminUser = admin
+      $scope.admin = function(){
+      if ($scope.user.email == $scope.adminUser.email){
+        return true
+      }
     }
-  }
-
-  //At some point will connect to a recepie API
-  $scope.menu = function(){
-    console.log('Coming soon!')
-  }
-
-}])
-.controller('FavoriteCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', function($scope, $location, $http, Auth, UsersAPI){
-  $scope.user = Auth.currentUser();
-
-  $scope.isLoggedIn = function() {
-      return Auth.isLoggedIn();
-  }
-
-  //This may at some point allow users to save preferred donating locations
+  })
 
 }])
 .controller('PantryCtrl', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'PantriesAPI', function($scope, $location, $http, Auth, UsersAPI, PantriesAPI){
@@ -156,16 +143,18 @@ angular.module('AppCtrl', ['AppServices'])
   }
 
   $scope.addItem = function(){
+    //Capitalize the first letter of the item name to help it match our DB
+    $scope.name = $scope.newItem.name.charAt(0).toUpperCase().concat($scope.newItem.name.slice(1))
+
+    //get all the foods in our DB, then add that info to the user supplied info
+    //about the item they are adding to their panty
     FoodsAPI.getFood()
     .then( function success(res){
       $scope.dbFood = res.data;
       $scope.tempFood = $scope.dbFood.filter(function(item){
-        return item.name == $scope.newItem.name
+        return item.name == $scope.name
       })
       $scope.food = $scope.tempFood[0]
-
-      console.log($scope.food)
-      console.log($scope.newItem.name)
       if ($scope.food) {
         $scope.fullItem = {
           userId: $scope.user.id,
@@ -179,11 +168,12 @@ angular.module('AppCtrl', ['AppServices'])
           fridge: $scope.food.fridge
         }
       } else {
+        // If the db didn't return a matching product name
         $scope.fullItem = {
           userId: $scope.user.id,
-          name: $scope.newItem.name,
+          name: $scope.name,
           addDate: $scope.newItem.addDate,
-          img: "http://www.prevention.com/sites/prevention.com/files/images/news/featured_images/food-question-mark-628x363.jpg",
+          img: '../../images/questionMark.jpg',
           useBy: '15',
           type: "Unknown",
           compostable: "Unknown",
@@ -191,8 +181,6 @@ angular.module('AppCtrl', ['AppServices'])
           fridge: "Unknown"
         }
       }
-
-      console.log("++++++++++", $scope.fullItem)
       PantriesAPI.addPantry($scope.fullItem).then(function success(res){
         $location.path('/pantry')
       }, function error(err){
@@ -280,7 +268,7 @@ angular.module('AppCtrl', ['AppServices'])
   }
 
 }])
-.controller('Admin', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'FoodsAPI', function($scope, $location, $http, Auth, UsersAPI, FoodsAPI){
+.controller('Admin', ['$scope', '$location', '$http', 'Auth', 'UsersAPI', 'FoodsAPI', 'AdminAPI', function($scope, $location, $http, Auth, UsersAPI, FoodsAPI, AdminAPI){
   $scope.user = Auth.currentUser();
   $scope.isLoggedIn = function() {
       return Auth.isLoggedIn();
@@ -290,12 +278,14 @@ angular.module('AppCtrl', ['AppServices'])
     $scope.user = user.data
   })
 
-  $scope.admin = function(){
-    console.log($scope.user)
-    if ($scope.user.name == 'Hailey'){
-      return true
+  AdminAPI.getAdmin().then(function(admin){
+    $scope.adminUser = admin
+      $scope.admin = function(){
+      if ($scope.user.email == $scope.adminUser.email){
+        return true
+      }
     }
-  }
+  })
 
   $scope.newFood = {
     img: '',
@@ -324,5 +314,25 @@ angular.module('AppCtrl', ['AppServices'])
       console.log("Add food failed", err)
     })
   }
+
+}])
+.controller('MenuCtrl', ['$scope', '$http', '$location', 'MenuAPI', function($scope, $http, $location, MenuAPI){
+  $scope.recipes = [];
+  $scope.searchTerm = {
+    ingredients: ''
+  };
+
+  $scope.search = function(){
+    console.log('click')
+    MenuAPI.getMenu($scope.searchTerm)
+    .then(function success(res){
+      console.log("Got ",res.data)
+      $scope.recipes = res.data
+      console.log($scope.recipes)
+    }, function error(err){
+      console.log("Failed to get", err)
+    }) 
+  }
+
 
 }])

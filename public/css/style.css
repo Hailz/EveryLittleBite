@@ -1,7 +1,26 @@
 body{
-  color: #8bd12a;
+  /*color: #8bd12a;*/
+  color: #153607;
+  /*background-color: #0d7bdb;*/
+  font-family: 'Sahitya', serif;
+}
+a{
+  color: #153607;
 }
 .itemCard{
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+.navLogo{
+  max-width: 35px;
+}
+.btnSize{
+  width: 100%;
+}
+.productImg{
+  width: 60%;
+  max-height: 250px;
+}
+.addItemBtn{
+  margin: 10px;
 }

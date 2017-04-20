@@ -71,6 +71,18 @@ angular.module('AppServices', ['ngResource'])
         }
    }
 }])
+.factory('AdminAPI', ['$http', function($http){
+  return {
+    getAdmin: function(){
+      return $http.get('/api/users/')
+      .then(function success(res){
+        return res.data[0]
+      }, function error(err){
+        return console.log(err)
+      })
+    }
+  }
+}])
 .factory('FavoritesAPI', ['$http', '$location', function($http, $location){
   return{
     addFavorite: function(favorite){
@@ -135,6 +147,14 @@ angular.module('AppServices', ['ngResource'])
     },
     getFood: function(){
       return $http.get('/api/foods');
+    }
+  }
+}])
+.factory('MenuAPI', ['$http', '$location', function($http, $location){
+  return{
+    getMenu: function(ingredients){
+      console.log("IN FACTORY",ingredients)
+      return $http.post('/menus', ingredients);
     }
   }
 }])
