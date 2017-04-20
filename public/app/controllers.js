@@ -109,6 +109,28 @@ angular.module('AppCtrl', ['AppServices'])
     $scope.userPantry = $scope.pantries.filter(function(pantry){
       return pantry.userId == $scope.user.id
     })
+    $scope.fruits = $scope.userPantry.filter(function(item){
+      console.log(item.type)
+      return item.type == "fruit"
+    })
+
+    console.log("----------",$scope.fruits)
+
+    $scope.vegetables = $scope.userPantry.filter(function(item){
+      return item.type == "vegetable"
+    })
+
+    $scope.dairy =$scope.userPantry.filter(function(item){
+      return item.type == "dairy"
+    })
+
+    $scope.meat = $scope.userPantry.filter(function(item){
+      return item.type == "meat"
+    })
+
+    $scope.unknown = $scope.userPantry.filter(function(item){
+      return item.type == "Unknown"
+    })
   }, function error(err){
     console.log('Error', err);
   })
@@ -328,16 +350,54 @@ angular.module('AppCtrl', ['AppServices'])
     ingredients: ''
   };
 
+  //hardcoded recipie return for styling purposes
+  $scope.recipes = [ { id: 42621,
+      title: 'Homemade Applesauce',
+      image: 'https://spoonacular.com/recipeImages/homemade-applesauce-42621.jpg',
+      imageType: 'jpg',
+      usedIngredientCount: 1,
+      missedIngredientCount: 1,
+      likes: 0 },
+    { id: 221363,
+      title: 'Potato-Apple Latkes',
+      image: 'https://spoonacular.com/recipeImages/potato-apple-latkes-221363.jpg',
+      imageType: 'jpg',
+      usedIngredientCount: 1,
+      missedIngredientCount: 1,
+      likes: 0 },
+    { id: 65597,
+      title: 'Cinnamon Streusel Muffins',
+      image: 'https://spoonacular.com/recipeImages/cinnamon-streusel-muffins-65597.jpg',
+      imageType: 'jpg',
+      usedIngredientCount: 1,
+      missedIngredientCount: 2,
+      likes: 0 },
+    { id: 721001,
+      title: 'Apple Fruit Baskets',
+      image: 'https://spoonacular.com/recipeImages/apple-fruit-baskets-721001.jpg',
+      imageType: 'jpg',
+      usedIngredientCount: 1,
+      missedIngredientCount: 2,
+      likes: 45 },
+    { id: 163949,
+      title: 'Pork Chops with Apples and Sage',
+      image: 'https://spoonacular.com/recipeImages/Pork-Chops-with-Apples-and-Sage-163949.jpg',
+      imageType: 'jpg',
+      usedIngredientCount: 1,
+      missedIngredientCount: 2,
+      likes: 0 } ];
+
+
   $scope.search = function(){
     console.log('click')
-    MenuAPI.getMenu($scope.searchTerm)
-    .then(function success(res){
-      console.log("Got ",res.data)
-      $scope.recipes = res.data
-      console.log($scope.recipes)
-    }, function error(err){
-      console.log("Failed to get", err)
-    }) 
+    // MenuAPI.getMenu($scope.searchTerm)
+    // .then(function success(res){
+    //   console.log("Got ",res.data)
+    //   $scope.recipes = res.data
+    //   console.log($scope.recipes)
+    // }, function error(err){
+    //   console.log("Failed to get", err)
+    // }) 
   }
 
 

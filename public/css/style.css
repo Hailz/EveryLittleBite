@@ -2,6 +2,7 @@ body{
   /*color: #8bd12a;*/
   color: #153607;
   /*background-color: #0d7bdb;*/
+  background-color: lightBlue;
   font-family: 'Sahitya', serif;
 }
 a{
@@ -10,6 +11,10 @@ a{
 .itemCard{
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  margin-top: 10px;
+}
+.recipeBackground{
+  background-color: white;
 }
 .navLogo{
   max-width: 35px;
@@ -20,7 +25,37 @@ a{
 .productImg{
   width: 60%;
   max-height: 250px;
+  margin-bottom: 5px;
 }
 .addItemBtn{
   margin: 10px;
+}
+.recipeImg{
+  width: 90%;
+  height: 30vw;
+  max-height: 300px;
+  margin-top: 10px;
+}
+.recipeTitle{
+  /*height: 20%;*/
+}
+.fruits{
+  background-color: green;
+  color: white;
+}
+.vegetables{
+  background-color: green;
+  color: white;
+}
+.dairy{
+  background-color: yellow;
+  color: white;
+}
+.meat{
+  background-color: red;
+  color: white;
+}
+.unknown{
+  background-color: navy;
+  color: white;
 }

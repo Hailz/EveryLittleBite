@@ -1,13 +1,23 @@
+<div class="form-group row">
+  <label class="col-xs-2 col-form-label">Search for recipes by ingredient:</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="text" ng-model='searchTerm.ingredients'>
+  </div>
+</div>
 <div class="row">
-  <label>Search for recipes by ingredient:</label>
-  <input type="text" ng-model='searchTerm.ingredients'>
-  <input type="submit" ng-click='search()'>
+  <input class="btn btn-default" type="submit" ng-click='search()'>
 </div>
 <div class="row">
   <div ng-repeat='recipe in recipes track by $index'>
-    <div>
-      <h1>{{recipe.title}}</h1>
-      <img ng-src="{{recipe.image}}">
+    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+      <div class="itemCard recipeBackground">
+        <img class="recipeImg" ng-src="{{recipe.image}}">
+        <h2 class="col-xs-12">{{recipe.title}}</h2>
+        <div class="row recipeTitle">
+          
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<br>
