@@ -110,7 +110,6 @@ angular.module('AppCtrl', ['AppServices'])
     })
     //further filter for each individual catergory
     $scope.fruits = $scope.userPantry.filter(function(item){
-      console.log(item.type)
       return item.type == "fruit"
     })
 
@@ -140,7 +139,6 @@ angular.module('AppCtrl', ['AppServices'])
     $scope.dayDifference = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
     var age = ($scope.dayDifference -1)
     //based on the difference in days get a class to determine item background color
-    console.log(useBy)
     if (age < (useBy / 2)) {
       $scope.class = 'success';
     } else if (age < useBy){

@@ -44,22 +44,22 @@ a{
   margin-top: 10px;
 }
 .fruits{
-  background-color: green;
+  background-color: #945D60;
   color: white;
 }
 .vegetables{
-  background-color: green;
+  background-color: #626E60;
   color: white;
 }
 .dairy{
-  background-color: yellow;
+  background-color: #3C3C3C;
   color: white;
 }
 .meat{
-  background-color: red;
+  background-color: #945D60;
   color: white;
 }
 .unknown{
-  background-color: navy;
+  background-color: rgb(79,98,114);
   color: white;
 }
