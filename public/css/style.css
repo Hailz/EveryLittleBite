@@ -47,6 +47,7 @@ a{
 .productImg{
   width: 60%;
   max-height: 250px;
+  min-height: 131.24px;
   margin-bottom: 5px;
 }
 .addItemBtn{
