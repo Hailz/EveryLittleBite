@@ -5,21 +5,22 @@
 </div>
 
 <content ng-show='admin()'>
-  <form ng-submit='addFood()'>
-    <label>Product Img:</label>
-    <input ng-model='newFood.img' class="form-control" type="text" name="img" placeholder="Image URL">
-    <label>Name:</label>
-    <input ng-model='newFood.name' class="form-control" type="text" name="name" placeholder="ie Apple">
-    <label>useBy:</label>
-    <input ng-model='newFood.useBy' class="form-control" type="num" name="useBy" placeholder="Number of days good for. ie 10">
-    <label>Type:</label>
-    <input ng-model='newFood.type' class="form-control" type="text" name="type" placeholder="dairy meat veg fruit">
-    <label>Compostable:</label>
-    <input ng-model='newFood.compostable' class="form-control" type="text" name="compostable" placeholder="true or false">
-    <label>Freeze Info:</label>
-    <input ng-model='newFood.freeze' class="form-control" type="text" name="freeze" placeholder="Freeze or not info">
-    <label>Fridge Info:</label>
-    <input ng-model='newFood.fridge' class="form-control" type="text" name="fridge" placeholder="Refigeration info">
-    <input type="submit" class="btn btn-default">
-  </form>
+    <p>Capitalize the first letter of single word entries! Type options are: Fruit Vegetable Dairy or Meat.</p>
+    <form ng-submit='addFood()'>
+        <label>Product Img:</label>
+        <input ng-model='newFood.img' class="form-control" type="text" name="img" placeholder="Image URL">
+        <label>Name:</label>
+        <input ng-model='newFood.name' class="form-control" type="text" name="name" placeholder="ie Apple">
+        <label>useBy:</label>
+        <input ng-model='newFood.useBy' class="form-control" type="num" name="useBy" placeholder="Number of days good for. ie 10">
+        <label>Type:</label>
+        <input ng-model='newFood.type' class="form-control" type="text" name="type" placeholder="Dairy Meat Vegetable Fruit">
+        <label>Compostable:</label>
+        <input ng-model='newFood.compostable' class="form-control" type="text" name="compostable" placeholder="True or False">
+        <label>Freeze Info:</label>
+        <input ng-model='newFood.freeze' class="form-control" type="text" name="freeze" placeholder="Freeze or not info. Complete sentence structure.">
+        <label>Fridge Info:</label>
+        <input ng-model='newFood.fridge' class="form-control" type="text" name="fridge" placeholder="Refigeration info. Complete sentence structure.">
+        <input type="submit" class="btn btn-default">
+    </form>
 </content>

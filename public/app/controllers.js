@@ -110,19 +110,19 @@ angular.module('AppCtrl', ['AppServices'])
     })
     //further filter for each individual catergory
     $scope.fruits = $scope.userPantry.filter(function(item){
-      return item.type == "fruit"
+      return item.type == "Fruit"
     })
 
     $scope.vegetables = $scope.userPantry.filter(function(item){
-      return item.type == "vegetable"
+      return item.type == "Vegetable"
     })
 
     $scope.dairy =$scope.userPantry.filter(function(item){
-      return item.type == "dairy"
+      return item.type == "Dairy"
     })
 
     $scope.meat = $scope.userPantry.filter(function(item){
-      return item.type == "meat"
+      return item.type == "Meat"
     })
 
     $scope.unknown = $scope.userPantry.filter(function(item){
@@ -241,7 +241,7 @@ angular.module('AppCtrl', ['AppServices'])
   })
 
   $scope.compostable = function(){
-    if ($scope.item.compostable == 'true') {
+    if ($scope.item.compostable == 'True') {
       return true
     } 
   }
