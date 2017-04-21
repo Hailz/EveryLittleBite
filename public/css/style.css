@@ -6,6 +6,13 @@ body{
 a{
   color: #153607;
 }
+.m{
+  margin: auto;
+}
+.p{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .itemCard{
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
@@ -42,6 +49,7 @@ a{
 .addItemBtn{
   margin: 5px auto 20px auto;
   color: white;
+  width: 35%;
 }
 .hmBtn{
   margin-bottom: 15px;

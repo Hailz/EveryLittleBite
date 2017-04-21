@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-xs-3">Search:</label>
-      <div class="col-xs-9">
+      <h2 class="col-xs-3 col-sm-3 col-md-3 col-lg-3 m">Search:</h2>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
         <input class="form-control" type="text" id="search" ng-model="search">
       </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}} itemCorners">
           <div class="itemBackground rowPush itemCorners">
             <a ng-href="/pantry/{{item._id}}">
-            <h3>{{item.name}}</h3>
+            <h2>{{item.name}}</h2>
             <h4>Purchased: {{item.addDate | date}}</h4>
             <img class="img-circle productImg" ng-src="{{item.img}}">
             </a>
@@ -41,12 +41,12 @@
 
     <div ng-if='!search'>
       <div class="row fruits shadow rowPush" ng-if='fruits.length > 0'>
-        <h1 class="recipeBackground">Fruits</h1>
+        <h1 class="recipeBackground p">Fruits</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 rowPush" ng-repeat='item in fruits track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}} itemCorners">
             <div class="itemBackground rowPush itemCorners">
               <a ng-href="/pantry/{{item._id}}">
-              <h3>{{item.name}}</h3>
+              <h2>{{item.name}}</h2>
               <h4>Purchased: {{item.addDate | date}}</h4>
               <img class="img-circle productImg" ng-src="{{item.img}}">
               </a>
@@ -56,12 +56,12 @@
       </div>
 
       <div class="row vegetables shadow rowPush" ng-if='vegetables.length > 0'>
-        <h1 class="recipeBackground">Vegetables</h1>
+        <h1 class="recipeBackground p">Vegetables</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 rowPush" ng-repeat='item in vegetables track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}} itemCorners">
             <div class="itemBackground rowPush itemCorners">
               <a ng-href="/pantry/{{item._id}}">
-              <h3>{{item.name}}</h3>
+              <h2>{{item.name}}</h2>
               <h4>Purchased: {{item.addDate | date}}</h4>
               <img class="img-circle productImg" ng-src="{{item.img}}">
               </a>
@@ -71,12 +71,12 @@
       </div>
 
       <div class="row dairy shadow rowPush" ng-if='dairy.length > 0'>
-        <h1 class="recipeBackground">Dairy</h1>
+        <h1 class="recipeBackground p">Dairy</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 rowPush" ng-repeat='item in dairy track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}} itemCorners">
             <div class="itemBackground rowPush itemCorners">
               <a ng-href="/pantry/{{item._id}}">
-              <h3>{{item.name}}</h3>
+              <h2>{{item.name}}</h2>
               <h4>Purchased: {{item.addDate | date}}</h4>
               <img class="img-circle productImg" ng-src="{{item.img}}">
               </a>  
@@ -86,12 +86,12 @@
       </div>
 
       <div class="row meat shadow rowPush" ng-if='meat.length > 0'>
-        <h1 class="recipeBackground">Meat</h1>
+        <h1 class="recipeBackground p">Meat</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 rowPush" ng-repeat='item in meat track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}} itemCorners">
             <div class="itemBackground rowPush itemCorners">
               <a ng-href="/pantry/{{item._id}}">
-              <h3>{{item.name}}</h3>
+              <h2>{{item.name}}</h2>
               <h4>Purchased: {{item.addDate | date}}</h4>
               <img class="img-circle productImg" ng-src="{{item.img}}">
               </a>
@@ -101,12 +101,12 @@
       </div>
 
       <div class="row unknown shadow rowPush" ng-if='unknown.length > 0'>
-        <h1 class="recipeBackground">Unknown</h1>
+        <h1 class="recipeBackground p">Unknown</h1>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 rowPush" ng-repeat='item in unknown track by item._id'>
           <div class="itemCard bg-{{getClass(item.addDate, item.useBy)}} itemCorners">
             <div class="itemBackground rowPush itemCorners">
               <a ng-href="/pantry/{{item._id}}">
-              <h3>{{item.name}}</h3>
+              <h2>{{item.name}}</h2>
               <h4>Purchased: {{item.addDate | date}}</h4>
               <img class="img-circle productImg" ng-src="{{item.img}}">
               </a>
