@@ -62,6 +62,9 @@ a{
   max-height: 300px;
   margin-top: 10px;
 }
+.recipeTitle{
+  height: 120px;
+}
 .fruits{
   background-color: #945D60;
 }
