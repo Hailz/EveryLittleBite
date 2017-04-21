@@ -32,6 +32,7 @@ a{
 }
 .btnSize{
   width: 100%;
+  color: white;
 }
 .productImg{
   width: 60%;
@@ -40,6 +41,7 @@ a{
 }
 .addItemBtn{
   margin: 5px auto 20px auto;
+  color: white;
 }
 .hmBtn{
   margin-bottom: 15px;
@@ -52,25 +54,23 @@ a{
 }
 .fruits{
   background-color: #945D60;
-  color: white;
 }
 .vegetables{
   background-color: #626E60;
-  color: white;
 }
 .dairy{
   background-color: #3C3C3C;
-  color: white;
 }
 .meat{
-  background-color: #945D60;
-  color: white;
+  background-color: rgb(175,71,60);
 }
 .unknown{
   background-color: rgb(79,98,114);
-  color: white;
 }
 .rowPush{
   margin-bottom: 20px;
+}
+.img{
+  margin-top: 10px;
 }
 

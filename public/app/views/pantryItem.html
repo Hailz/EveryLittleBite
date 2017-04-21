@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12 bg-{{class}}">
-    <img ng-src="{{item.img}}" class="img-circle">
+    <img ng-src="{{item.img}}" class="img-circle img">
     <h2>{{item.name}} <small>{{item.type}}</small></h2>
     <h3>Purchased: {{item.addDate | date}}</h3>
   </div>
@@ -15,9 +15,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <a class="btn btn-default" href="/foodbanks">Donate</a>
-    <a class="btn btn-default" ng-show='compostable()' href="/gardens">Compost</a>
-    <a class="btn btn-default" href="/editItem/{{item._id}}">Buy Again</a>
-    <button ng-click='deleteItem(item._id)' class="btn btn-default">Delete</button>
+    <a class="btn fruits" href="/foodbanks">Donate</a>
+    <a class="btn vegetables" ng-show='compostable()' href="/gardens">Compost</a>
+    <a class="btn unknown" href="/editItem/{{item._id}}">Buy Again</a>
+    <button ng-click='deleteItem(item._id)' class="btn meat">Delete</button>
   </div>
 </div>
