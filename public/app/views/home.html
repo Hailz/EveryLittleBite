@@ -4,7 +4,7 @@
       <a ng-hide='isLoggedIn()' class="btn btn-default" href='/login'>Login</a>
       <a ng-hide='isLoggedIn()' class="btn btn-default" href='/signup'>Signup</a>
       <br>
-      <h2 ng-show='isLoggedIn()'>Welcome {{ user.name }}</h2>
+      <h2 class="fontShadow" ng-show='isLoggedIn()'>Welcome {{ user.name }}</h2>
       <br>
       <a href="/admin"><button ng-show='admin()' class="btn btn-default btn-lg addItemBtn">Foods DB</button></a>
     </div>
@@ -23,5 +23,8 @@
     <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
       <a href="/recipes" class="btn btn-lg btnFruit btnSize shadow">Menu</a>
     </div>  
+  </div>
+  <div class="row">
+    <img class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 logo" src="../../images/logo.png">
   </div>
 </div>

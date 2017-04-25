@@ -1,7 +1,7 @@
-<div class="background">
+<div class="shelves">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h1><strong>Pantry</strong></h1>
+      <h1 class="fontShadow"><strong>Pantry</strong></h1>
       <div ng-hide='isLoggedIn()'>
         <h2>Please <a href="/signup">create an account</a> or <a href="/login">login</a> to access your pantry!</h2>
       </div> 
@@ -10,8 +10,8 @@
   <div ng-show='isLoggedIn()'>
     <div class="row">
       <div ng-if='userPantry < 1' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h2>You don't have any items in your pantry!</h2>
-        <a href="/addItem" class="btn btn-lg btnUnknown addItemBtn">Add Items</a>
+        <h2 class="fontShadow">You don't have any items in your pantry!</h2>
+        <a href="/addItem" class="btn btn-md btnUnknown addItemBtn">Add Items</a>
       </div>
 
       <div ng-if='userPantry.length > 0' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

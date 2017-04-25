@@ -7,14 +7,23 @@ a{
   color: #153607;
 }
 .background{
-  background-image: url('../../images/maybe.jpg');
+  background-image: url('../../images/background.jpg');
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -20px;
+}
+.shelves{
+  background-image: url('../../images/woodBackground.jpg');
   height: 100%; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .home{
-  margin-top: -20px;
+  /*margin-top: -20px;*/
+  /*padding-bottom: 20%;*/
 }
 .m{
   margin: auto;
@@ -25,6 +34,9 @@ a{
 }
 .fontColor{
   color: black;
+}
+.fontShadow{
+  text-shadow: 1px 1px black;
 }
 .itemCard{
   border: 1px solid rgba(0,0,0,0.1);
@@ -117,4 +129,8 @@ a{
   margin-top: 10px;
   width: 30vw; 
   height: 30vw;
+}
+.logo{
+  width: 25%;
+  height: 25%;
 }
