@@ -131,6 +131,7 @@ a{
   height: 30vw;
 }
 .logo{
-  width: 25%;
-  height: 25%;
+  width: 40%;
+  height: 40%;
+  min-width: 100px;
 }
