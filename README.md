@@ -1,5 +1,6 @@
 # EveryLittleBite
 Built by Hailey Dangel, Designed by Benjamin Frates
+https://everylittlebite.herokuapp.com/
 
 #Technical Requirements
 
@@ -45,7 +46,7 @@ Built by Hailey Dangel, Designed by Benjamin Frates
   I finished getting a recipe API connected and built an admin controller to help prevent access to admin pages. 
 
   ## Day 5:
-  
+  Working on styling and some debugging.
 
 # Roadbumps:
 Not being able to get Ionic to work within this time frame was very dissapointing and frustrating. Ionic just updated to v3 and I believe that is why the tutorials I was finding weren't working. In the end it was just going to be too much to learn and build in a week.

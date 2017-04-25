@@ -1,25 +1,27 @@
-<div class="row">
-  <div class="">
-    <a ng-hide='isLoggedIn()' class="btn btn-default" href='/login'>Login</a>
-    <a ng-hide='isLoggedIn()' class="btn btn-default" href='/signup'>Signup</a>
-    <br>
-    <h2 ng-show='isLoggedIn()'>Welcome {{ user.name }}</h2>
-    <br>
-    <a href="/admin"><button ng-show='admin()' class="btn btn-default btn-lg addItemBtn">Foods DB</button></a>
+<div class="background home">
+  <div class="row">
+    <div>
+      <a ng-hide='isLoggedIn()' class="btn btn-default" href='/login'>Login</a>
+      <a ng-hide='isLoggedIn()' class="btn btn-default" href='/signup'>Signup</a>
+      <br>
+      <h2 ng-show='isLoggedIn()'>Welcome {{ user.name }}</h2>
+      <br>
+      <a href="/admin"><button ng-show='admin()' class="btn btn-default btn-lg addItemBtn">Foods DB</button></a>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
-    <a href='/pantry' class="btn btn-lg vegetables btnSize">Your Eats</a>
-  </div>  
-</div>
-<div class="row">
-  <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
-    <a href='/donate' class="btn btn-lg unknown btnSize">Donate</a>
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
+      <a href='/pantry' class="btn btn-lg btnVegetable btnSize shadow">Your Eats</a>
+    </div>  
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
-    <a href="/recipes" class="btn btn-lg fruits btnSize">Menu</a>
-  </div>  
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
+      <a href='/donate' class="btn btn-lg btnUnknown btnSize shadow">Donate</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4 hmBtn">
+      <a href="/recipes" class="btn btn-lg btnFruit btnSize shadow">Menu</a>
+    </div>  
+  </div>
 </div>

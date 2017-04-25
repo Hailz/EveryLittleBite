@@ -1,20 +1,30 @@
 body{
-  color: #153607;
-  background-color: white;
   font-family: 'Sahitya', serif;
+  background-color: #eee9e9;
+  color: white;
 }
 a{
   color: #153607;
+}
+.background{
+  background-image: url('../../images/maybe.jpg');
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.home{
+  margin-top: -20px;
 }
 .m{
   margin: auto;
 }
 .p{
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 2px;
 }
-.w{
-  color: white;
+.fontColor{
+  color: black;
 }
 .itemCard{
   border: 1px solid rgba(0,0,0,0.1);
@@ -42,7 +52,9 @@ a{
 }
 .btnSize{
   width: 100%;
-  color: white;
+}
+.addBtn{
+  width: 25%;
 }
 .productImg{
   width: 60%;
@@ -56,6 +68,7 @@ a{
 }
 .hmBtn{
   margin-bottom: 15px;
+  height: 100%;
 }
 .recipeImg{
   width: 90%;
@@ -67,19 +80,35 @@ a{
   height: 120px;
 }
 .fruits{
-  background-color: #945D60;
+  border-top: 2px solid #945D60;
+  padding-top: 10px;
 }
 .vegetables{
-  background-color: #626E60;
+  border-bottom: 2px solid #626E60;
 }
 .dairy{
-  background-color: #3C3C3C;
+  border-bottom: 2px solid #3C3C3C;
 }
 .meat{
-  background-color: rgb(175,71,60);
+  border-bottom: 2px solid rgb(175,71,60);
 }
 .unknown{
-  background-color: rgb(79,98,114);
+  border-bottom: 2px solid rgb(79,98,114);
+}
+.btnFruit{
+  border-color: #945D60;
+  color: #945D60;
+  background-color: white;
+}
+.btnVegetable{
+  border-color: #626E60;
+  color: #626E60;
+  background-color: white;
+}
+.btnUnknown{
+  border-color: rgb(79,98,114);
+  color: rgb(79,98,114);
+  background-color: white;
 }
 .rowPush{
   margin-bottom: 20px;
@@ -89,4 +118,3 @@ a{
   width: 30vw; 
   height: 30vw;
 }
-

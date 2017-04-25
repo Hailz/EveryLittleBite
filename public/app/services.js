@@ -74,7 +74,7 @@ angular.module('AppServices', ['ngResource'])
 .factory('AdminAPI', ['$http', function($http){
   return {
     getAdmin: function(){
-      return $http.get('/api/users/')
+      return $http.get('api/users/')
       .then(function success(res){
         return res.data[0]
       }, function error(err){
@@ -142,7 +142,6 @@ angular.module('AppServices', ['ngResource'])
 .factory('FoodsAPI', ['$http', '$location', function($http, $location){
   return{
     addFood: function(item){
-      console.log('Add to foods', item)
       return $http.post('/api/foods', item);
     },
     getFood: function(){
@@ -150,10 +149,9 @@ angular.module('AppServices', ['ngResource'])
     }
   }
 }])
-.factory('MenuAPI', ['$http', '$location', function($http, $location){
+.factory('MenuAPI', ['$http', function($http){
   return{
     getMenu: function(ingredients){
-      console.log("IN FACTORY",ingredients)
       return $http.post('/menus', ingredients);
     }
   }

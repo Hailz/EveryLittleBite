@@ -83,7 +83,7 @@ angular.module('AppCtrl', ['AppServices'])
 
   AdminAPI.getAdmin().then(function(admin){
     $scope.adminUser = admin
-      $scope.admin = function(){
+    $scope.admin = function(){
       console.log($scope.adminUser, "VS", $scope.user)
       if ($scope.user.email == $scope.adminUser.email){
         return true
