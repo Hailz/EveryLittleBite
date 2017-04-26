@@ -389,7 +389,7 @@ angular.module('AppCtrl', ['AppServices'])
     console.log('click')
     MenuAPI.getMenu($scope.searchTerm)
     .then(function success(res){
-      console.log("Got ",res.data)
+      console.log("Got "+res.data)
       $scope.recipes = res.data
       console.log($scope.recipes)
     }, function error(err){

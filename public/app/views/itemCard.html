@@ -1,0 +1,11 @@
+<div class="row itemCard itemBackground">
+  <a ng-href="/pantry/{{item._id}}">
+    <img class="col-sx-1 col-sm-4 pull-left itemImg" ng-src="{{item.img}}">
+    <div class="col-xs-4 col-sm-6 fontColor">
+      <h2 class="">{{item.name}}</h2>
+      <h4 class="">Purchased: {{item.addDate | date}}</h4>
+    </div>
+    <i class="fa fa-clock-o img-circle bubble bg-{{getClass(item.addDate, item.useBy)}}" aria-hidden="true"></i>
+  </a>  
+</div>
+
