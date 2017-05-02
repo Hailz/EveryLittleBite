@@ -1,23 +1,30 @@
-<div class="row">
-  <div class="col-xs-12 bg-{{class}}">
-    <img ng-src="{{item.img}}" class="img">
-    <h2>{{item.name}} <small>{{item.type}}</small></h2>
-    <h3>Purchased: {{item.addDate | date}}</h3>
+<div class="itemCard itemBackground text-center">
+
+  <div class="row rowPush">
+    <img class="col-sx-1 col-sm-4 pull-left fixLeft itemImg" ng-src="{{item.img}}">
+    <div class="col-xs-4 col-sm-6">
+      <h2>{{item.name}}</h2>
+      <h4>Purchased: {{item.addDate | date}}</h4>
+    </div>
+    <i class="fa fa-clock-o img-circle bubble bg-{{class}}" aria-hidden="true"></i>
   </div>
-</div>
-<div class="row">
-  <div>
-    <h4>Recommended to use within {{item.useBy}} days.</h4>
-    <h4>Compostable? {{item.compostable}}</h4>
-    <h4>Refrigeration info: {{item.fridge}}</h4>
-    <h4>Freezable? {{item.freeze}}</h4>
+
+  <div class="row text-center">
+    <div class="col-xs-11">
+      <h4>Recommended to use within {{item.useBy}} days.</h4>
+      <h4>Compostable? {{item.compostable}}</h4>
+      <h4>Refrigeration info: {{item.fridge}}</h4>
+      <h4>Freezable? {{item.freeze}}</h4>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <a class="btn fruits" href="/foodbanks">Donate</a>
-    <a class="btn vegetables" ng-show='compostable()' href="/gardens">Compost</a>
-    <a class="btn unknown" href="/editItem/{{item._id}}">Buy Again</a>
-    <button ng-click='deleteItem(item._id)' class="btn meat">Delete</button>
+  
+  <div class="row rowPush">
+    <div class="col-xs-12">
+      <a class="btn btn-default vegetables" href="/foodbanks">Donate</a>
+      <a class="btn btn-default meat" ng-show='compostable()' href="/gardens">Compost</a>
+      <a class="btn btn-default dairy" href="/editItem/{{item._id}}">Buy Again</a>
+      <a ng-click='deleteItem(item._id)' class="btn btn-default vegetables">Delete</a>
+    </div>
   </div>
+
 </div>

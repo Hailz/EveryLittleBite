@@ -19,7 +19,7 @@ h3{
   color: #018abd;
 }
 .background{
-  background-image: url('../../images/cuttingBoard.jpeg');
+  background-image: url('../../images/cooking.jpeg');
   height: 100%; 
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +27,7 @@ h3{
   margin-top: -20px;
 }
 .shelf{
-  background-image: url('../../images/potatos.jpg');
+  background-image: url('../../images/cuttingBoard.jpeg');
   margin-top: -20px;
   padding-top: 50px;
   padding-bottom: 50px; 
@@ -77,28 +77,17 @@ h3{
 .navLogo{
   max-width: 35px;
 }
-.btnSize{
-  width: 100%;
-}
-.addBtn{
-  width: 25%;
-}
 .productImg{
   width: 60%;
   max-height: 250px;
   min-height: 131.24px;
   margin-bottom: 5px;
 }
-.addItemBtn{
-  margin: 3% auto 3% 3%;
-  width: 35%;
-}
 .minW{
   min-width: 105px;
 }
-.hmBtn{
-  margin-bottom: 15px;
-  height: 100%;
+.fixLeft{
+  margin-left: 3%;
 }
 .itemImg{
   max-height: 258px;
@@ -133,6 +122,9 @@ h3{
 .unknown{
   border-bottom: 4px solid #dde8f0;
 }
+.btn-default{
+  background-color: lightgray;
+}
 .btnFruit{
   border-color: #001b48;
   color: #001b48;
@@ -147,6 +139,21 @@ h3{
   border-color: #018abd;
   color: #018abd;
   background-color: white;
+}
+.addItemBtn{
+  margin: 3% auto 3% 5%;
+  width: 35%;
+  background-color: #018abd;
+}
+.hmBtn{
+  margin-bottom: 15px;
+  height: 100%;
+}
+.btnSize{
+  width: 100%;
+}
+.addBtn{
+  width: 25%;
 }
 .rowPush{
   margin-top: 4%;

@@ -2,9 +2,7 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h1 class=""><strong>Pantry</strong></h1>
   </div>
-</div>
 
-<div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
     <div ng-hide='isLoggedIn()'>
@@ -13,12 +11,12 @@
 
     <div ng-show='isLoggedIn()'>
       <div ng-if='userPantry < 1'>
-        <a href="/addItem" class="btn btn-md btnUnknown addItemBtn col-xs-3">Add Items</a>
+        <a href="/addItem" class="btn btn-lg addItemBtn col-xs-3">Add Items</a>
         <h2 class="col-xs-12">You don't have any items in your pantry!</h2>
       </div>
       <div ng-if='userPantry.length > 1'>
         <div class="row">
-          <a href="/addItem" class="btn btn-lg btnUnknown addItemBtn pull-left col-3 col-offset-9 minW">Add Items</a>          
+          <a href="/addItem" class="btn btn-lg addItemBtn pull-left col-3 col-offset-9 minW">Add Items</a>          
         </div>
       </div>
     </div>
@@ -30,9 +28,11 @@
     </div>
 
   </div>
+
+  <img src="../../images/logo.png">
+
 </div>
 
-<img src="../../images/logo.png">
 
 <section class="fontColor">
   <div ng-show='isLoggedIn()'>
@@ -60,7 +60,7 @@
 
       <div class="row rowPush" ng-if='vegetables.length > 0'>
         <h1 class="p text-left">Vegetables</h1>
-        <div class="vagetables">
+        <div class="vegetables">
           <div class="col-xs-12 col-sm-6 rowPush" ng-repeat='item in vegetables track by item._id'>
 
             <div ng-include="'app/views/itemCard.html'"></div>
