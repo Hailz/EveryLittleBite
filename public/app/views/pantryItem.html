@@ -1,24 +1,30 @@
-<div class="itemCard itemBackground text-center">
+<div class="itemCard itemBackground text-center" id="pantryItem" role='dialog'>
 
-  <div class="row rowPush">
-    <img class="col-sx-1 col-sm-4 pull-left fixLeft itemImg" ng-src="{{item.img}}">
-    <div class="col-xs-4 col-sm-6">
-      <h2>{{item.name}}</h2>
-      <h4>Purchased: {{item.addDate | date}}</h4>
+<!--   <div class="modal-header">
+    <button type="button" class="close" data-dismiss='modal'>&times;</button>
+  </div> -->
+
+  <div class="modal-body">
+    <div class="row rowPush">
+      <img class="col-sx-1 col-sm-4 pull-left fixLeft itemImg" ng-src="{{item.img}}">
+      <div class="col-xs-4 col-sm-6">
+        <h2>{{item.name}}</h2>
+        <h4>Purchased: {{item.addDate | date}}</h4>
+      </div>
+      <i class="fa fa-clock-o img-circle bubble bg-{{class}}" aria-hidden="true"></i>
     </div>
-    <i class="fa fa-clock-o img-circle bubble bg-{{class}}" aria-hidden="true"></i>
-  </div>
 
-  <div class="row text-center">
-    <div class="col-xs-11">
-      <h4>Recommended to use within {{item.useBy}} days.</h4>
-      <h4>Compostable? {{item.compostable}}</h4>
-      <h4>Refrigeration info: {{item.fridge}}</h4>
-      <h4>Freezable? {{item.freeze}}</h4>
+    <div class="row text-center">
+      <div class="col-xs-11">
+        <h4>Recommended to use within {{item.useBy}} days.</h4>
+        <h4>Compostable? {{item.compostable}}</h4>
+        <h4>Refrigeration info: {{item.fridge}}</h4>
+        <h4>Freezable? {{item.freeze}}</h4>
+      </div>
     </div>
   </div>
   
-  <div class="row rowPush">
+  <div class="row rowPush modal-footer">
     <div class="col-xs-12">
       <a class="btn btn-default vegetables" href="/foodbanks">Donate</a>
       <a class="btn btn-default meat" ng-show='compostable()' href="/gardens">Compost</a>

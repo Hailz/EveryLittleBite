@@ -18,8 +18,11 @@ h3{
   font-size: 20px;
   color: #018abd;
 }
+.welcome{
+  color: white;
+}
 .background{
-  background-image: url('../../images/cooking.jpeg');
+  background-image: url('../../images/cutOnion.jpg');
   height: 100%; 
   background-position: center;
   background-repeat: no-repeat;
